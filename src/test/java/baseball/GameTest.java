@@ -25,7 +25,7 @@ public class GameTest {
         }
     }
 
-    private static void assertMatchedNumber(GuessResult result, boolean solved, int strikes, int balls) {
+    private void assertMatchedNumber(GuessResult result, boolean solved, int strikes, int balls) {
         assertThat(result).isNotNull();
         assertThat(result.getSolved()).isEqualTo(solved);
         assertThat(result.getStrikes()).isEqualTo(strikes);
@@ -33,7 +33,7 @@ public class GameTest {
     }
 
     private void generateQuestion(String questionNumber) {
-        game.question = questionNumber;
+        game.setQuestion(questionNumber);
     }
 
     @Test
