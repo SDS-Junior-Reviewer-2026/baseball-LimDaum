@@ -61,7 +61,11 @@ public class GameTest {
     public void returnUnSolvedResultIfSomeMatchedNumber() {
         generateQuestion("123");
         assertMatchedNumber(game.guess("120"), false, 2, 0);
-        assertMatchedNumber(game.guess("061"), false, 0, 1);
+        assertMatchedNumber(game.guess("145"), false, 1, 0);
         assertMatchedNumber(game.guess("136"), false, 1, 1);
+        assertMatchedNumber(game.guess("132"), false, 1, 2);
+        assertMatchedNumber(game.guess("061"), false, 0, 1);
+        assertMatchedNumber(game.guess("315"), false, 0, 2);
+        assertMatchedNumber(game.guess("312"), false, 0, 3);
     }
 }
