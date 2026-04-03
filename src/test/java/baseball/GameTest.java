@@ -46,13 +46,13 @@ public class GameTest {
     }
 
     @Test
-    public void 숫자_세개가_전부_일치_할_경우_3_strike() {
+    public void returnSolvedReesultIfAllNumberMatch() {
         generateQuestion("123");
         assertMatchedNumber(game.guess("123"), true, 3, 0);
     }
 
     @Test
-    public void 숫자_세개가_전부_일치_하지_않을_경우_0_strike_0_ball() {
+    public void returnUnSolvedResultIfNoMatchedNumber() {
         generateQuestion("123");
         assertMatchedNumber(game.guess("456"), false, 0, 0);
     }

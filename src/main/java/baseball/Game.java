@@ -6,26 +6,15 @@ public class Game {
     public GuessResult guess(String guessNumber) {
         assertIllegalArgument(guessNumber);
 
-        if (guessNumber.equals(question)) {
-            return new GuessResult(true, 3, 0);
+        if (isSolved(guessNumber)) {
+            return getGuessResult();
         }
         else {
-            int strikes = 0;
-            int balls = 0;
-            for (int i = 0; i < question.length(); i++) {
-                if (question.indexOf(guessNumber.charAt(i)) == i) {
-                    strikes++;
-                }
-                else if (question.indexOf(guessNumber.charAt(i)) > -1) {
-                    balls++;
-                }
-            }
-
-            return new GuessResult(false, strikes, balls);
+            return createUnSolvedResult(guessNumber);
         }
     }
 
-    private static void assertIllegalArgument(String guessNumber) {
+    private void assertIllegalArgument(String guessNumber) {
         if (guessNumber == null) {
             throw new IllegalArgumentException();
         }
@@ -45,9 +34,32 @@ public class Game {
         }
     }
 
-    private static boolean isDuplicateNumber(String guessNumber) {
+    private boolean isDuplicateNumber(String guessNumber) {
         return guessNumber.charAt(0) == guessNumber.charAt(1)
                 || guessNumber.charAt(0) == guessNumber.charAt(2)
                 || guessNumber.charAt(1) == guessNumber.charAt(2);
+    }
+
+    private boolean isSolved(String guessNumber) {
+        return guessNumber.equals(question);
+    }
+
+    private GuessResult getGuessResult() {
+        return new GuessResult(true, 3, 0);
+    }
+
+    private GuessResult createUnSolvedResult(String guessNumber) {
+        int strikes = 0;
+        int balls = 0;
+        for (int i = 0; i < question.length(); i++) {
+            if (question.indexOf(guessNumber.charAt(i)) == i) {
+                strikes++;
+            }
+            else if (question.indexOf(guessNumber.charAt(i)) > -1) {
+                balls++;
+            }
+        }
+
+        return new GuessResult(false, strikes, balls);
     }
 }
