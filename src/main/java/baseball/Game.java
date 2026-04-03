@@ -3,6 +3,10 @@ package baseball;
 public class Game {
 
     public void guess(String guessNumber) {
+        assertIllegalArgument(guessNumber);
+    }
+
+    private static void assertIllegalArgument(String guessNumber) {
         if (guessNumber == null) {
             throw new IllegalArgumentException();
         }
@@ -17,10 +21,14 @@ public class Game {
             }
         }
 
-        if (guessNumber.charAt(0) == guessNumber.charAt(1)
-            || guessNumber.charAt(0) == guessNumber.charAt(2)
-            || guessNumber.charAt(1) == guessNumber.charAt(2)) {
+        if (isDuplicateNumber(guessNumber)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private static boolean isDuplicateNumber(String guessNumber) {
+        return guessNumber.charAt(0) == guessNumber.charAt(1)
+                || guessNumber.charAt(0) == guessNumber.charAt(2)
+                || guessNumber.charAt(1) == guessNumber.charAt(2);
     }
 }
