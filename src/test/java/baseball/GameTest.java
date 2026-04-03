@@ -7,6 +7,10 @@ public class GameTest {
 
 	@Test
 	public void 입력값이_없을_경우() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			Game game = new Game();
+			game.guess(null);
+		});
 	}
 	
 	@Test
