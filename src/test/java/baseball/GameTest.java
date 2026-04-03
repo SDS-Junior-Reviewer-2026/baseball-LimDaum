@@ -40,9 +40,9 @@ public class GameTest {
         GuessResult result = game.guess("123");
 
         assertThat(result).isNotNull();
-        assertThat(result.solved).isEqualTo(true);
-        assertThat(result.strikes).isEqualTo(3);
-        assertThat(result.balls).isEqualTo(0);
+        assertThat(result.getSolved()).isEqualTo(true);
+        assertThat(result.getStrikes()).isEqualTo(3);
+        assertThat(result.getBalls()).isEqualTo(0);
     }
 
     @Test
